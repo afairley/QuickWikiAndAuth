@@ -28,8 +28,8 @@ def make_map():
     map.connect('edit_page', '/pages/edit/{title}', controller='pages',
                 action='edit')
     map.connect('save_page', '/pages/save/{title}', controller='pages',
-                action='save', conditions=dict(method='POST')
-    map.connect('delete_page', '/pages/delete/{title}', controller='pages',
+                action='save', conditions=dict(method='POST'))
+    map.connect('delete_page', '/pages/delete', controller='pages',
                 action='delete')
     map.connect('/{title}', controller='pages', action='show')
 
