@@ -1,0 +1,3 @@
+include quickwiki/config/deployment.ini_tmpl
+recursive-include quickwiki/public *
+recursive-include quickwiki/templates *
