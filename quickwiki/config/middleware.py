@@ -8,6 +8,7 @@ from pylons import config
 from pylons.middleware import ErrorHandler, StatusCodeRedirect
 from pylons.wsgiapp import PylonsApp
 from routes.middleware import RoutesMiddleware
+from repose.who.config import make_middleware_with_config as make_who_with_config
 
 from quickwiki.config.environment import load_environment
 
@@ -46,7 +47,8 @@ def make_app(global_conf, full_stack=True, static_files=True, **app_conf):
     app = CacheMiddleware(app, config)
 
     # CUSTOM MIDDLEWARE HERE (filtered by error handling middlewares)
-
+    app = make_who_with_config(app, global_conf, app_conf['who.config_file'], 
+        app_conf['who.log_file'],app_conf['who.log_level'])
     if asbool(full_stack):
         # Handle Python exceptions
         app = ErrorHandler(app, global_conf, **config['pylons.errorware'])
