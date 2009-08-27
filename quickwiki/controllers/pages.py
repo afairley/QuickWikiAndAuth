@@ -42,7 +42,7 @@ class PagesController(BaseController):
         redirect_to('show_page', title=title)
     def delete(self):
         titles = request.POST.getall('title')
-        pages  = self.page_q.filter(Pate.title.in_(titles))
+        pages  = self.page_q.filter(Page.title.in_(titles))
         for page in pages:
           Session.delete(page)
         Session.commit()
