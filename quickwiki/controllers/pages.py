@@ -15,6 +15,8 @@ log = logging.getLogger(__name__)
 class PagesController(BaseController):
 
     def __before__(self):
+        if request.environ.get('repoze.who.identity') == None:
+                    abort(401)
         self.page_q = Session.query(Page)
 
     def show(self, title):
