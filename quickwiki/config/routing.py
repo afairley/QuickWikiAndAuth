@@ -19,7 +19,7 @@ def make_map():
     map.connect('/error/{action}/{id}', controller='error')
 
     # CUSTOM ROUTES HERE
-
+    map.connect('envirodump', '/envirodump', controller='envirodump', action='index')
     map.connect('home', '/', controller='pages',action='show',
                 title='FrontPage')
     map.connect('pages', '/pages', controller='pages', action='index')
